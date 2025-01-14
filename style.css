@@ -52,12 +52,18 @@
     height: 30%;
     transition: transform 0.2s ease;
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .micButton img:hover {
     transform: scale(1.2);
+    border: none;
+    outline: none;
 }
 
 .micButton img:active {
     transform: scale(0.9);
+    border: none;
+    outline: none;
 }
