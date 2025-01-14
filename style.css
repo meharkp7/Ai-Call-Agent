@@ -56,7 +56,6 @@
 
 .micButton img:hover {
     transform: scale(1.2);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .micButton img:active {
