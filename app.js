@@ -44,68 +44,41 @@ btn.addEventListener('click', () => {
     recognition.start();
 });
 
-function handleAgentCommand(message) {
-    if (message.includes('call') && message.includes('contact')) {
-        const contactName = message.replace('call', '').replace('contact', '').trim();
-        if (contactName) {
-            speak(`Searching for the contact ${contactName}`);
-            // Simulate searching and calling the contact
-            initiateCall(contactName);
-        } else {
-            speak("Please specify the contact name you want to call.");
-        }
-    } else if (message.includes('dial')) {
-        const phoneNumber = message.replace('dial', '').trim();
-        if (phoneNumber && /^\d+$/.test(phoneNumber)) {
-            speak(`Dialing the number ${phoneNumber}`);
-            // Simulate dialing the number
-            dialNumber(phoneNumber);
-        } else {
-            speak("Please provide a valid phone number to dial.");
-        }
-    } else if (message.includes('recent calls')) {
-        speak("Fetching your recent calls.");
-        // Simulate showing recent call logs
-        showRecentCalls();
-    } else if (message.includes('missed calls')) {
-        speak("Fetching your missed calls.");
-        // Simulate showing missed call logs
-        showMissedCalls();
-    } else if (message.includes('end call')) {
-        speak("Ending the current call.");
-        // Simulate ending the call
-        endCall();
+function takeCommand(message) {
+    if (message.includes('hey') || message.includes('hello')) {
+        speak("Hello Sir, How May I Help You?");
+    } else if (message.includes("open google")) {
+        window.open("https://google.com", "_blank");
+        speak("Opening Google...");
+    } else if (message.includes("open youtube")) {
+        window.open("https://youtube.com", "_blank");
+        speak("Opening Youtube...");
+    } else if (message.includes("open facebook")) {
+        window.open("https://facebook.com", "_blank");
+        speak("Opening Facebook...");
+    } else if (message.includes('what is') || message.includes('who is') || message.includes('what are')) {
+        window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
+        const finalText = "This is what I found on the internet regarding " + message;
+        speak(finalText);
+    } else if (message.includes('wikipedia')) {
+        window.open(`https://en.wikipedia.org/wiki/${message.replace("wikipedia", "").trim()}`, "_blank");
+        const finalText = "This is what I found on Wikipedia regarding " + message;
+        speak(finalText);
+    } else if (message.includes('time')) {
+        const time = new Date().toLocaleString(undefined, { hour: "numeric", minute: "numeric" });
+        const finalText = "The current time is " + time;
+        speak(finalText);
+    } else if (message.includes('date')) {
+        const date = new Date().toLocaleString(undefined, { month: "short", day: "numeric" });
+        const finalText = "Today's date is " + date;
+        speak(finalText);
+    } else if (message.includes('calculator')) {
+        window.open('Calculator:///');
+        const finalText = "Opening Calculator";
+        speak(finalText);
     } else {
-        speak("I'm sorry, I didn't understand that. Can you repeat your request?");
+        window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
+        const finalText = "I found some information for " + message + " on Google";
+        speak(finalText);
     }
-}
-
-// Example helper functions
-function speak(text) {
-    console.log(text); // Replace with text-to-speech functionality
-}
-
-function initiateCall(contactName) {
-    console.log(`Initiating call to ${contactName}`); 
-    // Add your logic to find and call the contact
-}
-
-function dialNumber(phoneNumber) {
-    console.log(`Dialing number: ${phoneNumber}`);
-    // Add your logic to dial the number
-}
-
-function showRecentCalls() {
-    console.log("Displaying recent call logs...");
-    // Add logic to fetch and display recent calls
-}
-
-function showMissedCalls() {
-    console.log("Displaying missed call logs...");
-    // Add logic to fetch and display missed calls
-}
-
-function endCall() {
-    console.log("Call ended.");
-    // Add logic to end the call
 }
