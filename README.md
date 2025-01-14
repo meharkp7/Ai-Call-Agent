@@ -47,39 +47,41 @@ This project demonstrates the integration of Twilio's Programmable Voice API to 
 
 1. Twilio Account:
 
- Sign up for a Twilio account and Obtaining Account SID, Auth Token, and Twilio Phone Number.
+    Sign up for a Twilio account and Obtaining Account SID, Auth Token, and Twilio Phone Number.
 
 2. CRM Data Processing :
- The CRM_Data.csv file contains customer details such as: Name, Phone No. and their Status
-
- The code prioritizes the customers on the basis of their priority and initiates a call with them in that order starting from those with status : Hot followed by Warm and then Cold.
+    
+    The CRM_Data.csv file contains customer details such as: Name, Phone No. and their Status. The code prioritizes the customers on the basis of their priority and initiates a call with them in that order starting from those with status : Hot followed by Warm and then Cold.
 
 3. Outbound Calls
-The call_customer() function uses the Twilio API to make calls:
+    
+    The call_customer() function uses the Twilio API to make calls:
 
 4. Dynamic Voice Responses
-The twiml_response.py file is a Flask app that generates TwiML for voice interactions. When Twilio requests the URL during a call, the Flask app provides the necessary instructions:
+    
+    The twiml_response.py file is a Flask app that generates TwiML for voice interactions. When Twilio requests the URL during a call, the Flask app provides the necessary instructions:
 
 
 # 2. Call Initialization:
 
-Trigger the AI to initiate the call to the selected customer.
-Ensure the system is capable of connecting and establishing the call effectively.
+    
+    Trigger the AI to initiate the call to the selected customer. Ensure the system is capable of connecting and establishing the call effectively.
 
 # 3. Voice Input: 
     
-The user clicks a button to start the speech recognition, and the system listens for customer input.
+    The user clicks a button to start the speech recognition, and the system listens for customer input.
 
 # 4. Intent Recognition: 
 
-The speech input is analyzed, and the intent is matched with predefined phrases such as greetings, inquiries, or goodbyes.
+    The speech input is analyzed, and the intent is matched with predefined phrases such as greetings, inquiries, or goodbyes.
 
 # 5.Generate Response: 
-Based on the identified intent, a predefined response is selected and converted into speech.
+    
+    Based on the identified intent, a predefined response is selected and converted into speech.
 
 # 6. Speech Output: 
     
-The generated response is spoken back to the user through the Speech Synthesis API.
+    The generated response is spoken back to the user through the Speech Synthesis API.
 
 # 7. Continue the Dialogue:
 
